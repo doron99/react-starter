@@ -1,0 +1,21 @@
+.season-clock-card {
+    display: flex;
+    flex-direction: column;
+    margin:20px;
+    background-color: #1706ff;
+    color:white;
+    width:200px;
+    height:250px;
+    justify-content: space-around;
+    align-content: center;
+    padding: 10px;
+}
+.season-clock-card img {
+    width: 9rem;
+    height: 8rem;
+    margin:auto;
+    display: block;
+}
+.season-clock-card h2,h3,img {
+    text-align: center;
+}

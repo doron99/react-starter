@@ -12,7 +12,14 @@ export function Home() {
        </section>
        <AnimalList animalInfos={items}/>
         <br/>
-        <SeasonClock/>
+        <div style={{ display: 'flex' }}>
+            <SeasonClock strDate='2025-01-01'/>
+            <SeasonClock strDate='2025-04-01'/>
+            <SeasonClock strDate='2025-07-01'/>
+            <SeasonClock strDate='2025-10-01'/>
+        </div>
+        
+
        </div>
         
     )
