@@ -1,3 +1,10 @@
 table {
-    background-color: aqua;
+    background-color: #a52a2a;
+    color:white;
+    border-collapse: collapse;
+    border-spacing:5px;
+    padding:5px;
+    
 }
+.animalTable td { padding: 10px; 
+border: 1px solid black;}

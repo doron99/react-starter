@@ -2,10 +2,11 @@
 import {utilService} from '../services/util.service.js'
 const { useState } = React
 
+import {RunningClock} from './RunningClock.jsx'
 export function SeasonClock({strDate = '2025-01-01'}) {
     console.log('strDate',strDate)
     const [dateString, setDateString] = useState(strDate || formatDateToString(new Date()));
-
+    const [isDark, setIsDark] = useState(false)
     const currMonth = String(new Date(dateString).getMonth() + 1);
 
     let currSeason = currMonth <= 3 ? 'winter' 
@@ -16,6 +17,7 @@ export function SeasonClock({strDate = '2025-01-01'}) {
     function onComponentClick(ev) {
         console.log('onComponentClick');
         ev.preventDefault()
+        setIsDark(!isDark);
         //onSetPage(page)
     }    
     // '2025-08-17', 'en-US'
@@ -29,27 +31,13 @@ export function SeasonClock({strDate = '2025-01-01'}) {
     const imgSrc = `./../assets/img/${currSeason}.png`
 
     return (
-        <div className='season-clock-card' onClick={(ev) => onComponentClick(ev)}>
+        <div className={`season-clock-card ${isDark ? 'dark' : ''}`} onClick={(ev) => onComponentClick(ev)}>
             
             <h2>{utilService.getMonthName(new Date(dateString),'en-US')} ({currSeason})</h2>
             <img src={imgSrc} width="120" height="100" />
             <h3>{utilService.getDayName(dateString,'en-US')}</h3>
-            
+            <RunningClock />
         </div>
-        // <header className="app-header full main-layout">
-        //     <section className="header-container">
-        //         <h1>React Starter Proj</h1>
-        //         <nav>
-        //             <a href="" className={(page === 'home') ? 'active' : ''}
-        //                 onClick={(ev) => onPageChange(ev, 'home')}>
-        //                 Home
-        //             </a> |
-        //             <a href="" className={(page === 'about') ? 'active' : ''}
-        //                 onClick={(ev) => onPageChange(ev, 'about')}>
-        //                 About
-        //             </a>
-        //         </nav>
-        //     </section>
-        // </header>
+      
     )
 }

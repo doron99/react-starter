@@ -1,0 +1,48 @@
+.watcher-container {
+    display: flex;
+}
+.watcher-card {
+    background:white;
+    padding:10px;
+    height:200px;
+    display:flex;
+    flex-direction:column;
+}
+.waterImg {
+    background-color: blue;
+    width:200px;
+    height: 200px;
+}
+.watcher-hr {
+    height:5px;
+    width:90%;
+    background-color: gray;
+}
+.watcher-container .buttons-container{
+    text-align: center;
+}
+.main-watcher-container {
+    position: relative;
+    width:100%;
+    height:500px;
+    background:#e6bfad;
+}
+.watcher-dialog {
+    width:200px;
+    height:200px;
+    background-color: #a52a2a;
+    color: white;
+    position: absolute;
+    top:0;
+    right:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.watcher-add-section {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    flex-direction: column;
+}
