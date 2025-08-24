@@ -7,19 +7,22 @@ export function WatcherDialog({ watcher, onClose }) {
     // Component logic here
     if (!watcher) return null;
     return (
-    
-        <div className='watcher-dialog'>
-            <h5>{watcher.fullname}</h5>
+        <div className="modal-backdrop">
+            <div className='modal watcher-dialog'>
+                <button className="buttonX" type='button' onClick={() => onClose()}>x</button>
+                <div className="d-flex">
+                    <h2>{watcher.fullname}</h2>
 
-            <ul>
-                {watcher.movies.map(movie => {
-                    return <li key={movie}>{movie}</li>
-                })}
-            </ul>
-            <div>
-                <button type='button' onClick={() => onClose()}>close</button>
+                    <ul>
+                        {watcher.movies.map(movie => {
+                            return <li key={movie}>{movie}</li>
+                        })}
+                    </ul>
+                </div>
+               
             </div>
         </div>
+        
     )
 }
 // export function WatcherDialog({watcher}) {

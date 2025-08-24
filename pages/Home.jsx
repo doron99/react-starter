@@ -17,23 +17,25 @@ export function Home() {
     return (
         <div>
             <section className="home">
-            <h2>Home Sweet Home</h2>
+            <h2></h2>
        </section>
        <WatcherApp/>
 
-       <AnimalList animalInfos={items}/>
+       {/* <AnimalList animalInfos={items}/>
         <br/>
         <div style={{ display: 'flex' }}>
             <SeasonClock strDate='2025-01-01'/>
-            <CountDown startFrom={10} toTime={Date.now() + 1000*12} onDone={handleChildAction}/>
-            {/* <SeasonClock strDate='2025-04-01'/>
-            <SeasonClock strDate='2025-07-01'/>
-            <SeasonClock strDate='2025-10-01'/> */}
+            <CountDown 
+            startFrom={10} 
+            toTime={Date.now() + 1000*12} 
+            onDone={handleChildAction}/>
         </div>
-        
+         */}
 
        </div>
         
     )
 }
-
+ {/* <SeasonClock strDate='2025-04-01'/>
+            <SeasonClock strDate='2025-07-01'/>
+            <SeasonClock strDate='2025-10-01'/> */}

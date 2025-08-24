@@ -7,48 +7,75 @@ const { useState, useEffect } = React
 export function WatcherApp({}) {
     const[watchers, setWatchers] =useState([])
     const[selectedWatcher, setSelectedWatcher] =useState(null)
+    const[isAddSectionVisible, setIsAddSectionVisible] =useState(false)
 
     const[filterBy, setFilterBy] =useState(watcherService.getDefaultFilter())
-    // const[selectedCar, setSelectedCar] =useState(null)
-    // const[isEdit, setIsEdit] =useState(false)
+
     const onDialogClose = (() => {
         setSelectedWatcher(null);
     })
-    useEffect(() =>{
-        watcherService.query(filterBy)
+    const loadWatchers = () => {
+        watcherService.query()
         .then(cars=> {
-            console.log('cars', cars)
-            return setWatchers(cars)
+            console.log('cars', cars);
+            return setWatchers(cars);
         })
-        .catch(err=>{
-            console.eror('err:', err)
-            //showErrorMsg('Cannot load cars')
-        }
-        )}, [filterBy])
+        .catch(err => console.log('err', err));
+    }
+    const onAddSectionClose = ((addedWatcher) => {
+        setIsAddSectionVisible(false);
+        if (!addedWatcher) return;
+
+        let added = addedWatcher;
+        //added.id = utilService.makeId();
+        console.log('added',added);
+        watcherService.save(added).then(() => {
+            loadWatchers();
+        });
+    });
+
+    useEffect(() =>{
+        console.log('do useEffect')
+        loadWatchers();
+        }, []);
     
-    
+    function toggleVisibility() {
+        setIsAddSectionVisible(!isAddSectionVisible);
+    }
+    const deleteWatcher = ((watcherId) => {
+        console.log('watcherId', watcherId);
+        watcherService.remove(watcherId).then(res => {
+            setWatchers(watchers.filter(w => w.id != watcherId))
+        });
+        //watchers = watchers.filter(w => w.id != watcherId);
+    });
     return (
          <div className='main-watcher-container'>
-            Watcher App
-            <br/>
-            <button type='button'>Add Watcher</button>
-            <br/>
-            <div style={{display:'flex'}}>
-                {watchers.map((watcher) => (
-                    <div key={watcher.id} className='watcher-container'>
-                        <div className='watcher-card'>
-                            <div className='waterImg'></div>
-                            <h3>{watcher.fullname}</h3>
-                            <hr className='watcher-hr'></hr>
-                            <div className='buttons-container'>
-                                <button type='button'>x</button>
-                                <button type='button' onClick={() => setSelectedWatcher(watcher)}>Select</button>
+                <div style={{textAlign:'center'}}>
+                    <h2>Watcher App</h2>
+                    <button type='button' onClick={toggleVisibility}>Add Watcher</button>
+
+                </div>
+                <div className='main-watcher-container-child'>
+                    {watchers.map((watcher) => (
+                        <div key={watcher.id} className='watcher-container'>
+                            <div className='watcher-card'>
+                                <div className='waterImg'></div>
+                                <h3>{watcher.fullname}</h3>
+                                <hr className='watcher-hr'></hr>
+                                <div className='buttons-container'>
+                                    <button type='button' onClick={() => deleteWatcher(watcher.id)}>x</button>
+                                    <button type='button' onClick={() => setSelectedWatcher(watcher)}>Select</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-              ))}
-            </div>
-            <WatcherAddSection/>
+                ))}
+                </div>
+         
+           
+            <WatcherAddSection 
+                isAddSectionVisible={isAddSectionVisible} 
+                onClose={onAddSectionClose} />
             <WatcherDialog  watcher={selectedWatcher} onClose={onDialogClose} />
             {/* <div className='watcher-dialog'>
 
