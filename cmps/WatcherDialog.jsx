@@ -1,5 +1,3 @@
-// import {utilService} from '../services/util.service.js'
-// import { watcherService} from '../services/watcher.service.js';
 const { useState, useEffect } = React
 
 export function WatcherDialog({ state, watcher, onClose }) {
@@ -37,7 +35,6 @@ export function WatcherDialog({ state, watcher, onClose }) {
         }
         resetAllFields();
         onClose(objToReturn);
-        // Here you can handle the submission, e.g., send data to an API
     };
     const resetAllFields = () => {
         setName('')
@@ -48,8 +45,9 @@ export function WatcherDialog({ state, watcher, onClose }) {
         onClose();
 
     }
-    
+    //---------- state 1 ---------//
     if (state == 'hidden') return null;
+    //---------- state 2 ---------//
     else if (state == 'add') {
         return (
             <div className="modal-backdrop" >
@@ -97,6 +95,7 @@ export function WatcherDialog({ state, watcher, onClose }) {
             </div>
             
         );
+    //---------- state 3 ---------//
     } else {
         return (
         <div className="modal-backdrop">
@@ -117,24 +116,5 @@ export function WatcherDialog({ state, watcher, onClose }) {
         
     )
     }
-    
 }
-// export function WatcherDialog({watcher}) {
-//     // const[currWatcher, setCurrWatcher] = useState(watcher)
 
-//     // useEffect(() =>{
-//     //     setCurrWatcher(watcher)
-       
-//     //     }, [watcher])
-
-//     if (!watcher) return <>afadfghahafghafghafghafgjafg</>
-//     return (
-        
-//         <div className='watcher-dialog'>
-//             <ul>
-//                 <li>{watcher.id}</li>
-//             </ul>
-//         </div>
-//     )
-// }
-{/* style={{background:'blue',width:'200px',height:'200px'}} */}

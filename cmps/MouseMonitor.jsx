@@ -7,30 +7,6 @@ export function MouseMonitor({}) {
     const [point, setPoint] = useState({x:0,y:0});
     const [isMouseTrackingActive, setIsMouseTrackingActive] = useState(false);
 
-    // useEffect(() => {
-    //     // const timerId = setInterval(() => {
-    //     //     setTime(new Date());
-    //     // });
-
-    //     // return () => {
-    //     //     clearInterval(timerId);
-    //     // }
-    //     window.addEventListener('mousemove',($event) => {
-    //         console.log('mousemove',$event);
-    //         setPoint({x: $event.clientX,y: $event.clientY})
-    //     })
-    //     return () => {
-    //         window.removeEventListener('mousemove',($event) => {
-    //             console.log('mousemove stopped',$event);
-    //             setPoint({x: 0,y: 0})
-
-    //         })
-    //     }
-    // },[])
-
-    // const formatTime = (date) => {
-    //     return date.toLocaleTimeString(); // Format time as HH:MM:SS
-    // };
     const handleMouseEvent = useRef(($event) => {
         setPoint({x: $event.clientX,y: $event.clientY})
     })

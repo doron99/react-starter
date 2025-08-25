@@ -4,7 +4,7 @@ const { useState } = React
 
 import {RunningClock} from './RunningClock.jsx'
 export function SeasonClock({strDate}) {
-    console.log('strDate',strDate)
+    console.log('strDate',strDate) //ניתן להזריק תאריך גם מבחוץ
     const [dateString, setDateString] = useState(strDate || formatDateToString(new Date()));
     const [isDark, setIsDark] = useState(false)
     const currMonth = String(new Date(dateString).getMonth() + 1);
@@ -18,7 +18,6 @@ export function SeasonClock({strDate}) {
         console.log('onComponentClick');
         ev.preventDefault()
         setIsDark(!isDark);
-        //onSetPage(page)
     }    
     // '2025-08-17', 'en-US'
     function formatDateToString(date) {
