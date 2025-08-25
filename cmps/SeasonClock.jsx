@@ -3,7 +3,7 @@ import {utilService} from '../services/util.service.js'
 const { useState } = React
 
 import {RunningClock} from './RunningClock.jsx'
-export function SeasonClock({strDate = '2025-01-01'}) {
+export function SeasonClock({strDate}) {
     console.log('strDate',strDate)
     const [dateString, setDateString] = useState(strDate || formatDateToString(new Date()));
     const [isDark, setIsDark] = useState(false)
