@@ -1,5 +1,5 @@
 export function AnimalList({ animalInfos }) {
-  if (!animalInfos) return <span>animalInfos not has been passed</span>;
+  if (!animalInfos) return <span>Missing array parameter</span>;
 
   return (
       <table className="animalTable">

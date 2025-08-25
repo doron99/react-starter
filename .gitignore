@@ -2,4 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
+/.vs/react-starter/CopilotIndices/17.14.995.13737
+/.vs/react-starter/FileContentIndex
+*.wsuo
