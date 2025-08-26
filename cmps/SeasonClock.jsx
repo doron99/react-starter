@@ -5,28 +5,17 @@ const { useState } = React
 import {RunningClock} from './RunningClock.jsx'
 export function SeasonClock({strDate}) {
     console.log('strDate',strDate) //ניתן להזריק תאריך גם מבחוץ
-    const [dateString, setDateString] = useState(strDate || formatDateToString(new Date()));
+    const [dateString, setDateString] = useState(strDate || utilService.convertDateToString(new Date()));
     const [isDark, setIsDark] = useState(false)
-    const currMonth = String(new Date(dateString).getMonth() + 1);
 
-    let currSeason = currMonth <= 3 ? 'winter' 
-    : (currMonth <= 6 ? 'spring' 
-        : (currMonth <= 9 ? 'summer' 
-            : 'autumn'))
+    let currSeason = getCurrSeasonByDateString(dateString);
 
     function onComponentClick(ev) {
         console.log('onComponentClick');
         ev.preventDefault()
         setIsDark(!isDark);
     }    
-    // '2025-08-17', 'en-US'
-    function formatDateToString(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-        const day = String(date.getDate()).padStart(2, '0');
-        
-        return `${year}-${month}-${day}`;
-    }
+   
     const imgSrc = `./../assets/img/${currSeason}.png`
 
     return (
@@ -39,4 +28,11 @@ export function SeasonClock({strDate}) {
         </div>
       
     )
+}
+const getCurrSeasonByDateString = (dateString) => {
+    const currMonth = String(new Date(dateString).getMonth() + 1);
+    return currMonth <= 3 ? 'winter' 
+            : (currMonth <= 6 ? 'spring' 
+                : (currMonth <= 9 ? 'summer' 
+                    : 'autumn'))
 }

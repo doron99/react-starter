@@ -15,14 +15,12 @@ export function RunningClock({}) {
         }
     },[])
 
-    const formatTime = (date) => {
-        return date.toLocaleTimeString(); // Format time as HH:MM:SS
-    };
+    
     
 
     return (
          <div style={{ fontSize: '20px', textAlign: 'center', marginTop: '5px' }}>
-            {formatTime(time)}
+            {utilService.convertDateToTime(time)}
         </div>
     )
 }

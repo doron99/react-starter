@@ -30,9 +30,9 @@ export function WatcherApp({}) {
     })
     const loadWatchers = () => {
         watcherService.query()
-        .then(cars=> {
-            console.log('cars', cars);
-            return setWatchers(cars);
+        .then(watcher=> {
+            console.log('watcher', watcher);
+            return setWatchers(watcher);
         })
         .catch(err => console.log('err', err));
     }
